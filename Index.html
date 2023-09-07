@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Change</title>
+    <style>
+        body {
+            background: rgb(35, 34, 34);
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .form {
+            width: 400px;
+            height: 300px;
+            background-color: rgb(55, 74, 67);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        #colorname {
+            width: 200px;
+            height: 30px;
+            border-radius: 1px;
+            border: none;
+            outline: none;
+            font-size: large;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .submit {
+            height: 30px;
+            width: 150px;
+            border-radius: 2px;
+            border: none;
+            outline: none;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            font-size: large;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body id="body">
+    <div class="form">
+        <form onsubmit="changeBackground(event)">
+            <input type="text" name="color" id="colorname" placeholder="Enter Color"><br><br>
+            <input type="submit" class="submit" value="Change">
+        </form>
+    </div>
+
+    <script>
+        var body = document.getElementById("body");
+        var form = document.querySelector(".form");
+
+        function changeBackground(event) {
+            event.preventDefault(); 
+
+            var colorInput = document.getElementById("colorname").value;
+            var previousColor = getComputedStyle(body).backgroundColor;
+            
+            body.style.backgroundColor = colorInput;
+            form.style.backgroundColor = previousColor;
+        }
+    </script>
+</body>
+</html>
